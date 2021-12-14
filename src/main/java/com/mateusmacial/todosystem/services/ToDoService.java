@@ -40,4 +40,10 @@ public class ToDoService {
 		newObj.setDescricao(obj.getDescricao());
 		newObj.setRealizada(obj.getRealizada());
 	}
+	
+	public void delete(Integer id) {
+		find(id);
+		toDoRepository.deleteById(id);
+	}
+	
 }
