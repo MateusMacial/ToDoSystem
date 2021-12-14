@@ -40,6 +40,4 @@ public class ToDoDTO implements Serializable {
 	public void setRealizada(Boolean realizada) {
 		this.realizada = realizada;
 	}
-	
-	
 }

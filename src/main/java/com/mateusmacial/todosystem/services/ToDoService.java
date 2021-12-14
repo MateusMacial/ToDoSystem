@@ -1,5 +1,6 @@
 package com.mateusmacial.todosystem.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +47,7 @@ public class ToDoService {
 		toDoRepository.deleteById(id);
 	}
 	
+	public List<ToDo> findAll(){
+		return toDoRepository.findAll();
+	}
 }

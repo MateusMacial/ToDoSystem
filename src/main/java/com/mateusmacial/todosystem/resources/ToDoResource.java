@@ -1,6 +1,8 @@
 package com.mateusmacial.todosystem.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -56,4 +58,12 @@ public class ToDoResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<List<ToDoDTO>> findAll() {		
+		List<ToDo> list = toDoService.findAll();		
+		List<ToDoDTO> listDto = list.stream()
+				.map(obj -> new ToDoDTO(obj))
+				.collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
+	}
 }
