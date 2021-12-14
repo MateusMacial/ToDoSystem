@@ -41,4 +41,13 @@ public class ToDoResource {
 				.toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@Valid @RequestBody ToDoDTO objDto, @PathVariable Integer id){
+		ToDo obj = toDoService.fromDTO(objDto);
+		obj.setId(id);
+		obj = toDoService.update(obj);
+		return ResponseEntity.noContent().build();
+	}
+	
 }

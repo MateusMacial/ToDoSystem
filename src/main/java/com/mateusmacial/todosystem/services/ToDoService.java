@@ -26,7 +26,18 @@ public class ToDoService {
 		return toDoRepository.save(obj);
 	}
 	
+	public ToDo update(ToDo obj) {
+		ToDo newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return toDoRepository.save(newObj);
+	}
+	
 	public ToDo fromDTO(ToDoDTO objDto) {
 		return new ToDo(objDto.getId(), objDto.getDescricao(), objDto.getRealizada());
+	}
+	
+	private void updateData(ToDo newObj, ToDo obj) {
+		newObj.setDescricao(obj.getDescricao());
+		newObj.setRealizada(obj.getRealizada());
 	}
 }
