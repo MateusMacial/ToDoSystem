@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import com.mateusmacial.todosystem.dto.ToDoDTO;
 import com.mateusmacial.todosystem.services.ToDoService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/todo")
 public class ToDoResource {
 	
@@ -46,6 +48,9 @@ public class ToDoResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ToDoDTO objDto, @PathVariable Integer id){
+		
+		//throw new RuntimeException("Erro");
+		
 		ToDo obj = toDoService.fromDTO(objDto);
 		obj.setId(id);
 		obj = toDoService.update(obj);
