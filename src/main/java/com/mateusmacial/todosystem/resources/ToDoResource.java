@@ -49,12 +49,12 @@ public class ToDoResource {
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ToDoDTO objDto, @PathVariable Integer id){
 		
-		throw new RuntimeException("Erro");
+		//throw new RuntimeException("Erro");
 		
-		//ToDo obj = toDoService.fromDTO(objDto);
-		//obj.setId(id);
-		//obj = toDoService.update(obj);
-		//return ResponseEntity.noContent().build();
+		ToDo obj = toDoService.fromDTO(objDto);
+		obj.setId(id);
+		obj = toDoService.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)
